@@ -11,3 +11,6 @@ stripe
 python-jose[cryptography]
 passlib[bcrypt]
 openai
+gtts
+SpeechRecognition
+pydub
