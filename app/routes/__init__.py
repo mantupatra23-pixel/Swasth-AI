@@ -12,7 +12,9 @@ from .caption import router as caption
 from .hashtag import router as hashtag
 from .competitor import router as competitor
 from .health_user import router as health_user
+from .workout import router as workout
 
+routers = [plan, user, health_user, workout]
 routers = [plan, user, health_user]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends, planner, caption, hashtag, competitor]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends, planner, caption, hashtag]
