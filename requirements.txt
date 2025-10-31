@@ -1,44 +1,41 @@
 # Core Framework
-fastapi
-uvicorn[standard]
-sqlalchemy
-psycopg2-binary
-pydantic
-python-dotenv
+fastapi==0.95.0
+uvicorn[standard]==0.21.1
+sqlalchemy==1.4.49
+psycopg2-binary==2.9.9
+pydantic==1.10.9
+python-dotenv==1.0.1
 
 # Background Jobs
-celery[redis]
+celery[redis]==5.2.7
 
 # Network & Auth
-aiohttp
-requests
-python-jose[cryptography]
-passlib[bcrypt]
+aiohttp==3.8.4
+requests==2.31.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
 
 # AI & Automation
-openai
-gtts
-pydub
+openai==0.28.0
+gtts==2.4.0
+pydub==0.25.1
 
 # Data Handling
-numpy
-pandas
-matplotlib
+numpy==1.23.5
+pandas==1.5.3
+matplotlib==3.7.2
 
 # Cloud & Payment
-stripe
-razorpay
-supabase
-cryptography
+stripe==5.4.0
+razorpay==1.3.0
+supabase==2.2.0
+cryptography==41.0.4
 
 # Email & Messaging
-aiosmtplib
+aiosmtplib==1.1.6
 
 # Video / Media (Lightweight)
-moviepy==1.0.3
-
-# Optional Lightweight Pose System (Safe for Render)
-mediapipe-lite==0.10.0
+moviepy==1.0.2
 
 # Logging & Security
-python-multipart
+python-multipart==0.0.6
