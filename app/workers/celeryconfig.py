@@ -20,3 +20,8 @@ beat_schedule = {
     }
 }
 timezone = "Asia/Kolkata"
+
+"track-engagement": {
+        "task": "track_engagement",
+        "schedule": crontab(hour="*/3", minute=0),  # every 3 hours
+    }
