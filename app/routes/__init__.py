@@ -6,7 +6,9 @@ from .ai_chat import router as ai_chat
 from .voice import router as voice
 from .feed import router as feed
 from .share import router as share
+from .trends import router as trends
 
+routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice]
