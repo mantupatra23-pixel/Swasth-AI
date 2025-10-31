@@ -20,7 +20,9 @@ from .coach import router as coach
 from .reminder import router as reminder
 from .community import router as community
 from .voice import router as voice
+from .dashboard import router as dashboard
 
+routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder]

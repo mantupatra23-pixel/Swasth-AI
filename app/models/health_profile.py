@@ -18,3 +18,4 @@ class HealthProfile(Base):
     ideal_weight = Column(Float, nullable=True)
     calories_required = Column(Float, nullable=True)
     created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
+    is_premium = Column(Boolean, default=False)
