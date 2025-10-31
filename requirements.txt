@@ -15,3 +15,5 @@ gtts
 SpeechRecognition
 pydub
 supabase
+requests
+python-twitter-v2
