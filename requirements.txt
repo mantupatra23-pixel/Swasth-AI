@@ -10,3 +10,4 @@ requests
 stripe
 python-jose[cryptography]
 passlib[bcrypt]
+openai
