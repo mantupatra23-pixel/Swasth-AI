@@ -8,3 +8,5 @@ celery[redis]
 aiosmtplib
 requests
 stripe
+python-jose[cryptography]
+passlib[bcrypt]

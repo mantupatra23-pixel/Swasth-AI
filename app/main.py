@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from app.routes import plan, user, analytics
 from app.core.database import Base, engine
+from app.routes import admin
+app.include_router(admin.router, prefix="/api")
 
 app = FastAPI(title="Swasth.AI Backend Phase 5 – Analytics Engine")
 
