@@ -39,3 +39,8 @@ moviepy==1.0.2
 
 # Logging & Security
 python-multipart==0.0.6
+
+# Build Tools (must be on top)
+pip==24.0
+setuptools==68.2.2
+wheel==0.41.2
