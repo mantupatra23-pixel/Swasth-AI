@@ -22,3 +22,8 @@ gtts
 pydub
 fastapi
 uvicorn
+moviepy
+gtts
+opencv-python
+openai
+pydub
