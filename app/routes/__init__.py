@@ -14,7 +14,9 @@ from .competitor import router as competitor
 from .health_user import router as health_user
 from .workout import router as workout
 from .diet import router as diet
+from .progress import router as progress
 
+routers = [plan, user, health_user, workout, diet, progress]
 routers = [plan, user, health_user, workout, diet]
 routers = [plan, user, health_user, workout]
 routers = [plan, user, health_user]
