@@ -27,3 +27,7 @@ gtts
 opencv-python
 openai
 pydub
+opencv-python
+mediapipe
+gtts
+numpy
