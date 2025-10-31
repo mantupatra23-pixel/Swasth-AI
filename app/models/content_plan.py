@@ -15,3 +15,5 @@ class ContentPlan(Base):
     status = Column(String, default="pending")  # pending | posted
     scheduled_time = Column(TIMESTAMP(timezone=True))
     created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
+    hashtags = Column(String, nullable=True)
+    hashtag_score = Column(Float, nullable=True)

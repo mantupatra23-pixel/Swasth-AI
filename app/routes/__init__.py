@@ -9,7 +9,8 @@ from .share import router as share
 from .trends import router as trends
 from .planner import router as planner
 from .caption import router as caption
-
+from .hashtag import router as hashtag
+routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends, planner, caption, hashtag]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends, planner, caption]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends, planner]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed, share, engagement, trends]
