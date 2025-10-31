@@ -1,0 +1,9 @@
+from celery.schedules import crontab
+
+beat_schedule = {
+    "generate-daily-feed": {
+        "task": "generate_daily_feed",
+        "schedule": crontab(hour=7, minute=0),  # Every day at 7 AM
+    }
+}
+timezone = "Asia/Kolkata"

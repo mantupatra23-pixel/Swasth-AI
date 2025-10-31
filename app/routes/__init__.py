@@ -4,7 +4,9 @@ from .analytics import router as analytics
 from .subscription import router as subscription
 from .ai_chat import router as ai_chat
 from .voice import router as voice
+from .feed import router as feed
 
+routers = [plan, user, analytics, subscription, admin, ai_chat, voice, feed]
 routers = [plan, user, analytics, subscription, admin, ai_chat, voice]
 routers = [plan, user, analytics, subscription, admin, ai_chat]
 routers = [plan, user, analytics, subscription]
