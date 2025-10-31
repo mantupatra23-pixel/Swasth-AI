@@ -26,7 +26,9 @@ from .video_trainer import router as video_trainer
 from .habits import router as habits
 from .pose import router as pose
 from .payment import router as payment
+from .journal import router as journal
 
+routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment, journal]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits]
