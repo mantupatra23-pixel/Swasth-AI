@@ -34,3 +34,5 @@ numpy
 matplotlib
 pandas
 numpy
+supabase
+cryptography

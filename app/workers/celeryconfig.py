@@ -61,3 +61,9 @@ task_acks_late = True
     "task": "app.services.reminder_service.run_reminders",
     "schedule": 60.0  # check every 1 minute
 }
+
+"daily-cloud-backup": {
+    "task": "app.services.cloud_sync_service.backup_user_data",
+    "schedule": 86400.0,  # 24 hours
+    "args": (1,)  # demo user ID, later loop through all
+}
