@@ -6,9 +6,23 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - redis
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/swasthai
       - SECRET_KEY=supersecret
+      - REDIS_URL=redis://redis:6379/0
+    command: >
+      bash -c "uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  worker:
+    build: .
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/swasthai
+    command: celery -A app.workers.celery_worker.celery worker --loglevel=info
+
   db:
     image: postgres:15
     environment:
@@ -19,3 +33,8 @@ services:
       - "5432:5432"
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"

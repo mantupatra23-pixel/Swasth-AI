@@ -17,13 +17,28 @@ def base_plan(goal: str, bmi: float) -> Dict[str, Any]:
         workouts = ["Yoga 30min", "Walk 30min", "Core 20min"]
     return {"calories": calories, "workouts": workouts}
 
-def generate_plan_from_profile(profile: Dict[str, Any]) -> Dict[str, Any]:
+def adjust_by_history(plan: Dict[str, Any], last_weight: float, current_weight: float) -> Dict[str, Any]:
+    # simple learning logic
+    diff = current_weight - last_weight
+    plan = plan.copy()
+    if diff > 1:
+        plan["calories"] = plan["calories"] - 150
+        plan["message"] = f"Detected weight gain (+{diff}kg), calories reduced slightly."
+    elif diff < -1:
+        plan["calories"] = plan["calories"] + 150
+        plan["message"] = f"Detected weight loss ({diff}kg), calories increased slightly."
+    else:
+        plan["message"] = f"Weight stable ({diff}kg), plan maintained."
+    return plan
+
+def generate_plan_from_profile(profile: Dict[str, Any], last_weight: float=None) -> Dict[str, Any]:
     weight = float(profile.get("weight", 70))
     height = float(profile.get("height", 170))
     goal = profile.get("goal", "maintain")
     bmi = compute_bmi(weight, height)
     plan = base_plan(goal, bmi)
+    if last_weight:
+        plan = adjust_by_history(plan, last_weight, weight)
     plan["bmi"] = bmi
     plan["goal"] = goal
-    plan["message"] = f"Plan generated for goal '{goal}' with BMI {bmi}"
     return plan
