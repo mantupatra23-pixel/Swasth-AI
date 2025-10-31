@@ -1,18 +1,29 @@
 import os
-from openai import OpenAI
-from dotenv import load_dotenv
 import base64
+from openai import OpenAI
+from app.core.supabase_client import supabase
+from dotenv import load_dotenv
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def generate_feed_image(prompt_text: str, category: str) -> str:
-    """
-    Generate motivational image using OpenAI DALL·E or fallback placeholder.
-    """
+def upload_to_supabase(local_path: str, file_name: str) -> str:
+    """Upload file to Supabase and return public URL."""
+    bucket = os.getenv("SUPABASE_BUCKET", "feed-images")
     try:
-        # Create visual description
-        scene_prompt = f"Minimalistic motivational poster about {category}. Text on image: '{prompt_text[:120]}'"
+        with open(local_path, "rb") as f:
+            supabase.storage.from_(bucket).upload(file_name, f)
+        public_url = supabase.storage.from_(bucket).get_public_url(file_name)
+        print(f"✅ Uploaded to Supabase: {public_url}")
+        return public_url
+    except Exception as e:
+        print(f"⚠️ Supabase upload failed: {e}")
+        return "https://via.placeholder.com/1024x1024.png?text=Swasth.AI"
+
+def generate_feed_image(prompt_text: str, category: str) -> str:
+    """Generate motivational image using OpenAI DALL·E & upload to Supabase."""
+    try:
+        scene_prompt = f"Create a clean, inspirational fitness poster about {category}. Text: '{prompt_text[:100]}'"
         image = client.images.generate(
             model="gpt-image-1",
             prompt=scene_prompt,
@@ -21,13 +32,16 @@ def generate_feed_image(prompt_text: str, category: str) -> str:
         image_base64 = image.data[0].b64_json
         img_data = base64.b64decode(image_base64)
 
-        save_path = f"/tmp/feed_{category}.png"
-        with open(save_path, "wb") as f:
+        file_name = f"{category}_{os.urandom(4).hex()}.png"
+        local_path = f"/tmp/{file_name}"
+
+        with open(local_path, "wb") as f:
             f.write(img_data)
 
-        print(f"✅ Generated AI feed image for category: {category}")
-        return save_path
+        # Upload to Supabase
+        image_url = upload_to_supabase(local_path, file_name)
+        os.remove(local_path)
+        return image_url
     except Exception as e:
         print(f"⚠️ Image generation failed: {e}")
-        # fallback placeholder
-        return "https://via.placeholder.com/1024x1024.png?text=Swasth.AI+Motivational+Feed"
+        return "https://via.placeholder.com/1024x1024.png?text=Swasth.AI+Feed"

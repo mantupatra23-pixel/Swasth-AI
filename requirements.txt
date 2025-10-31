@@ -14,3 +14,4 @@ openai
 gtts
 SpeechRecognition
 pydub
+supabase
