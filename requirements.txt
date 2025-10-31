@@ -17,3 +17,8 @@ pydub
 supabase
 requests
 python-twitter-v2
+openai
+gtts
+pydub
+fastapi
+uvicorn
