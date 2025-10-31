@@ -56,3 +56,8 @@ result_backend = "redis://redis:6379/0"
 worker_max_tasks_per_child = 10
 worker_prefetch_multiplier = 1
 task_acks_late = True
+
+"check-reminders": {
+    "task": "app.services.reminder_service.run_reminders",
+    "schedule": 60.0  # check every 1 minute
+}
