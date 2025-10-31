@@ -1,38 +1,44 @@
+# Core Framework
 fastapi
 uvicorn[standard]
 sqlalchemy
 psycopg2-binary
 pydantic
 python-dotenv
+
+# Background Jobs
 celery[redis]
-aiosmtplib
+
+# Network & Auth
+aiohttp
 requests
-stripe
 python-jose[cryptography]
 passlib[bcrypt]
-openai
-gtts
-SpeechRecognition
-pydub
-supabase
-requests
-python-twitter-v2
+
+# AI & Automation
 openai
 gtts
 pydub
-fastapi
-uvicorn
-moviepy
-gtts
-opencv-python
-openai
-pydub
-opencv-python
-mediapipe
-gtts
+
+# Data Handling
 numpy
-matplotlib
 pandas
-numpy
+matplotlib
+
+# Cloud & Payment
+stripe
+razorpay
 supabase
 cryptography
+
+# Email & Messaging
+aiosmtplib
+
+# Video / Media (Lightweight)
+moviepy==1.0.3
+
+# Optional Lightweight Pose System (Safe for Render)
+mediapipe-lite==0.10.0
+
+# Logging & Security
+python-multipart
