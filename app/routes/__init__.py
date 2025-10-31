@@ -18,7 +18,9 @@ from .progress import router as progress
 from .health import router as health
 from .coach import router as coach
 from .reminder import router as reminder
+from .community import router as community
 
+routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder]
 routers = [plan, user, health_user, workout, diet, progress, health, coach]
 routers = [plan, user, health_user, workout, diet, progress, health]
