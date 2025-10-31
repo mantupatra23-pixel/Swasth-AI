@@ -30,6 +30,7 @@ from .journal import router as journal
 from .challenge import router as challenge
 from .progress_visualizer import router as progress_visualizer
 from .cloud import router as cloud
+from .admin import router as admin
 
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment, journal, challenge, progress_visualizer, cloud]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment, journal, challenge, progress_visualizer]

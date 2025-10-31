@@ -67,3 +67,9 @@ task_acks_late = True
     "schedule": 86400.0,  # 24 hours
     "args": (1,)  # demo user ID, later loop through all
 }
+
+"daily-reminder-task": {
+    "task": "app.services.reminder_task.send_daily_reminders",
+    "schedule": 86400.0,  # every 24 hours
+    "args": ()
+}
