@@ -23,7 +23,9 @@ from .voice import router as voice
 from .dashboard import router as dashboard
 from .fit import router as fit
 from .video_trainer import router as video_trainer
+from .habits import router as habits
 
+routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard]
