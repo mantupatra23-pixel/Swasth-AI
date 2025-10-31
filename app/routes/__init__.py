@@ -21,7 +21,9 @@ from .reminder import router as reminder
 from .community import router as community
 from .voice import router as voice
 from .dashboard import router as dashboard
+from .fit import router as fit
 
+routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community]
