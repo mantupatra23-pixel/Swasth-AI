@@ -25,3 +25,8 @@ timezone = "Asia/Kolkata"
         "task": "track_engagement",
         "schedule": crontab(hour="*/3", minute=0),  # every 3 hours
     }
+
+"auto-post-planner": {
+        "task": "auto_post_from_planner",
+        "schedule": crontab(hour=7, minute=0),  # daily 7AM
+    }
