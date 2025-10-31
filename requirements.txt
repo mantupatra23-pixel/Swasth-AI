@@ -31,3 +31,6 @@ opencv-python
 mediapipe
 gtts
 numpy
+matplotlib
+pandas
+numpy

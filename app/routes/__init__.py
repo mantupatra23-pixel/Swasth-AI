@@ -28,7 +28,9 @@ from .pose import router as pose
 from .payment import router as payment
 from .journal import router as journal
 from .challenge import router as challenge
+from .progress_visualizer import router as progress_visualizer
 
+routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment, journal, challenge, progress_visualizer]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment, journal, challenge]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment, journal]
 routers = [plan, user, health_user, workout, diet, progress, health, coach, reminder, community, voice, dashboard, fit, video_trainer, habits, pose, payment]
