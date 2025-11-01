@@ -39,7 +39,7 @@ aiosmtplib==1.1.6
 moviepy==1.0.2
 
 # Logging & Security
-python-multipart==0.0.6
+python-multipart==0.0.9
 
 # Build Tools (keep at bottom)
 pip==24.0
