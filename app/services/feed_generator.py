@@ -1,44 +1,33 @@
+from openai import OpenAI
 import os
-import random
-import openai
-from app.services.image_generator import generate_feed_image
 from dotenv import load_dotenv
+import random
+from app.services.image_generator import generate_feed_image
 
-# Load environment variables
 load_dotenv()
 
-# Initialize OpenAI API Key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Predefined categories for motivational or fitness content
 categories = ["motivation", "nutrition", "workout", "mindfulness"]
 
 def generate_feed():
-    """
-    Generates a short motivational or fitness tip,
-    uses OpenAI GPT model for text generation,
-    and an image generator for visual feed content.
-    """
     cat = random.choice(categories)
-    prompt = f"Generate a short motivational or fitness tip (2 sentences) for category: {cat}."
+    prompt = f"Generate a short motivational or fitness tip (2 sentences) for {cat}."
 
     try:
-        completion = openai.ChatCompletion.create(
-            model="gpt-4-turbo",
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a health and motivation coach creating concise, powerful tips."},
+                {"role": "system", "content": "You are a health & motivation expert"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=100,
-            temperature=0.8
+            max_tokens=100
         )
+        msg = completion.choices[0].message.content.strip()
+    except Exception:
+        msg = "Keep your body active and your mind strong – consistency builds strength."
 
-        msg = completion.choices[0].message["content"].strip()
-
-    except Exception as e:
-        msg = f"Stay strong and consistent in your {cat} goals! ({str(e)})"
-
-    # Generate feed image based on message and category
+    # Generate image
     image_url = generate_feed_image(msg, cat)
 
     return {
