@@ -1,23 +1,17 @@
-import speech_recognition as sr
-from gtts import gTTS
-from pydub import AudioSegment
-import os, uuid
+import os
+import openai
+from dotenv import load_dotenv
 
-def transcribe_audio(file_path: str) -> str:
-    recognizer = sr.Recognizer()
-    with sr.AudioFile(file_path) as source:
-        audio = recognizer.record(source)
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+def transcribe_audio(file_path):
     try:
-        text = recognizer.recognize_google(audio)
-        return text
-    except sr.UnknownValueError:
-        return "Sorry, I could not understand the audio."
+        with open(file_path, "rb") as audio_file:
+            transcript = openai.Audio.transcriptions.create(
+                model="whisper-1",
+                file=audio_file
+            )
+            return transcript.text
     except Exception as e:
-        return f"Error: {str(e)}"
-
-def text_to_speech(text: str, lang: str = "en") -> str:
-    tts = gTTS(text=text, lang=lang)
-    file_id = str(uuid.uuid4())
-    output_path = f"/tmp/{file_id}.mp3"
-    tts.save(output_path)
-    return output_path
+        return f"Error during transcription: {str(e)}"
