@@ -1,12 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -e
 
-echo "🚀 Starting Swasth-AI backend..."
+echo "🚀 Booting Swasth-AI (Render Free Tier Safe)..."
 
-# Install dependencies explicitly at runtime
-pip install --upgrade pip
-pip install uvicorn fastapi python-dotenv
+python3 -m pip install --upgrade pip setuptools wheel
+python3 -m pip install uvicorn fastapi python-dotenv
 
-echo "✅ Dependencies installed successfully."
-echo "🔁 Running Uvicorn server..."
-python3 -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+echo "✅ Uvicorn ready — starting server..."
+exec python3 -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
