@@ -9,6 +9,7 @@ from app.schemas.plan import PlanOut
 
 router = APIRouter(tags=["plan"])
 
+
 def get_db():
     db = SessionLocal()
     try:
@@ -16,42 +17,59 @@ def get_db():
     finally:
         db.close()
 
+
 @router.post("/plan/generate", response_model=PlanOut)
 def generate_plan(payload: UserCreate):
     profile = payload.dict()
     plan = generate_plan_from_profile(profile)
     return plan
 
-@router.post("/plan/generate/from-user/{user_id}")
+
+@router.get("/plan/generate-from-user/{user_id}")
 def generate_plan_from_user(user_id: int, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.id == user_id).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    # fetch last workout plan
-    last = db.query(WorkoutPlan).filter(WorkoutPlan.user_id == user.id).order_by(WorkoutPlan.id.desc()).first()
+    # Fetch last workout plan
+    last = (
+        db.query(WorkoutPlan)
+        .filter(WorkoutPlan.user_id == user.id)
+        .order_by(WorkoutPlan.id.desc())
+        .first()
+    )
+
     last_weight = user.weight
     if last:
         try:
-            old_weight = float(last.plan_json.get("bmi", 0)) * ((user.height/100)**2)
+            old_weight = float(last.plan_json.get("bmi", 0)) * ((user.height / 100) ** 2)
             last_weight = old_weight
-        except:
+        except Exception:
             pass
 
-    plan = generate_plan_from_profile({
-        "weight": user.weight,
-        "height": user.height,
-        "goal": user.goal
-    }, last_weight)
+    plan = generate_plan_from_profile(
+        {
+            "weight": user.weight,
+            "height": user.height,
+            "goal": user.goal,
+        }
+    )
 
-    wp = WorkoutPlan(user_id=user.id, name="AI Plan", source="ai_engine", plan_json=plan)
+    wp = WorkoutPlan(
+        user_id=user.id,
+        name="AI Plan",
+        source="ai_engine",
+        plan_json=plan,
+    )
     db.add(wp)
     db.commit()
     db.refresh(wp)
+
     return {"plan_id": wp.id, "plan": plan}
-   from app.workers.celery_worker import generate_weekly_plans
+
 
 @router.post("/plan/auto-refresh")
 def trigger_auto_refresh():
+    from app.workers.celery_worker import generate_weekly_plans
     job = generate_weekly_plans.delay()
-    return {"task_id": job.id, "status": "Started background weekly plan generation"}
+    return {"status": "Started background weekly plan generation", "job_id": job.id}
