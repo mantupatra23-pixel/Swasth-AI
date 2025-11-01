@@ -43,3 +43,4 @@ python-multipart==0.0.9
 pip==24.0
 setuptools==68.2.2
 wheel==0.41.2
+SpeechRecognition==3.10.4
