@@ -6,7 +6,7 @@ echo "---- Upgrading pip and setup tools ----"
 pip install --upgrade pip setuptools wheel build
 
 echo "---- Installing core dependencies ----"
-pip install numpy>=2.1.2
+pip install "numpy>=2.1.2"
 
 echo "---- Installing from requirements.txt ----"
 pip install -r requirements.txt
