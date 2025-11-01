@@ -1,10 +1,13 @@
-#!/bin/sh
-set -e
+#!/usr/bin/env python3
+import os
+import subprocess
 
-echo "🚀 Booting Swasth-AI (Render Free Tier Safe)..."
+print("🚀 Swasth-AI server starting (Render Fix)...")
 
-python3 -m pip install --upgrade pip setuptools wheel
-python3 -m pip install uvicorn fastapi python-dotenv
+# Ensure dependencies
+subprocess.run(["pip", "install", "--upgrade", "pip", "setuptools", "wheel", "uvicorn", "fastapi", "python-dotenv"], check=True)
 
-echo "✅ Uvicorn ready — starting server..."
-exec python3 -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+print("✅ All dependencies installed successfully!")
+
+# Launch Uvicorn manually
+os.execvp("python3", ["python3", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", os.getenv("PORT", "10000")])
