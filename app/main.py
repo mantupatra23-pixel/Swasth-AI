@@ -1,3 +1,10 @@
+import os
+from dotenv import load_dotenv
+
+# ✅ Load Render environment variables manually (important)
+load_dotenv(dotenv_path="/etc/secrets/.env")
+print("✅ Environment variables loaded successfully from Render secrets!")
+
 from fastapi import FastAPI
 from app.routes import plan, user, analytics
 from app.core.database import Base, engine
@@ -21,13 +28,13 @@ app.include_router(admin.router, prefix="/api")
 @app.get("/")
 def root():
     return {
-        "status": "Swasth.AI v5",
-        "message": "Analytics & Dashboard API is running successfully 🚀"
+        "status": "Swasth.AI v5 🚀",
+        "message": "Analytics & Dashboard API is running successfully!"
     }
 
-# ---------------------------------------
+# ==========================
 # ✅ Security Configurations
-# ---------------------------------------
+# ==========================
 
 # CORS settings
 origins = [
