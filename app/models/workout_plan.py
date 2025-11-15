@@ -1,16 +1,13 @@
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, TIMESTAMP
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, TIMESTAMP, func
 from app.core.database import Base
 
 class WorkoutPlan(Base):
-    __tablename__ = "workout_plans"
+    __tablename__ = "workout_plan"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("health_profiles.id"))
-    day = Column(Date)
-    category = Column(String)  # strength/cardio/yoga etc.
-    workout_name = Column(String)
-    duration_min = Column(Integer)
-    calories_burn = Column(Float)
-    intensity = Column(String)  # low/medium/high
-    created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
+    user_id = Column(Integer, index=True)
+    day = Column(String, nullable=False)
+    workout_type = Column(String, nullable=False)
+    duration = Column(String, nullable=True)
+    notes = Column(String, nullable=True)
+    created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=func.now())
