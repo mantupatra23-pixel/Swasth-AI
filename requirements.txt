@@ -16,7 +16,7 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 
 # AI & Automation
-openai==0.28.0
+openai==1.51.0
 gtts==2.4.0
 pydub==0.25.1
 
