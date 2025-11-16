@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.reminder_service import add_reminder, get_all_reminders, run_reminders
 from app.schemas.reminder import ReminderCreate
 

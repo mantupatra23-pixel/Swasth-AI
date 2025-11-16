@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.progress_visualizer import generate_visual_report
 
 router = APIRouter(prefix="/progress", tags=["AI Progress Visualizer"])

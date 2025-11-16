@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.payment_service import create_payment, verify_payment, get_plans
 
 router = APIRouter(prefix="/payment", tags=["Payments"])

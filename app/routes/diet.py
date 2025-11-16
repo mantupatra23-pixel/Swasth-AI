@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.diet_generator import generate_diet
 from app.core.database import SessionLocal
 from app.models.diet_plan import DietPlan

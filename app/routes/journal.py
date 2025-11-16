@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.journal_service import add_journal_entry, get_today_entry, get_ai_insight
 from app.schemas.journal import JournalEntry
 

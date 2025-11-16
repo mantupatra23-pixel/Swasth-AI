@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.ai_coach import chat_with_coach
 from app.schemas.chat_log import ChatRequest
 

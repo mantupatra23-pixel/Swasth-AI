@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from fastapi.responses import FileResponse
 from app.services.video_trainer import generate_ai_video, get_video
 

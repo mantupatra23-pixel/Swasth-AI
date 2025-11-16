@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.caption_optimizer import optimize_caption
 
 router = APIRouter(prefix="/caption", tags=["Caption Optimizer"])

@@ -7,8 +7,7 @@ from app.services.ai_engine import generate_plan_from_profile
 from app.schemas.user import UserCreate
 from app.schemas.plan import PlanOut
 
-router = APIRouter(tags=["plan"])
-
+router = APIRouter()
 
 def get_db():
     db = SessionLocal()

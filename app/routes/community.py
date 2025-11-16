@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.community_service import add_post, get_feed, add_comment, ai_auto_encouragement
 from app.schemas.community import PostCreate, CommentCreate
 

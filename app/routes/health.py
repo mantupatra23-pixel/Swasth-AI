@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.health_monitor import add_health_log, get_health_report
 from app.schemas.health_log import HealthLogCreate
 

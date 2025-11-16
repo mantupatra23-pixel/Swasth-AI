@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.content_planner import generate_weekly_plan
 from app.models.content_plan import ContentPlan
 from app.schemas.content_plan import PlanOut

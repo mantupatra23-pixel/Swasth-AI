@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.challenge_service import create_ai_challenge, join_challenge, update_progress, get_leaderboard
 
 router = APIRouter(prefix="/challenge", tags=["AI Fitness Challenges"])

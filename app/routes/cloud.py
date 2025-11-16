@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.cloud_sync_service import backup_user_data, restore_user_data
 
 router = APIRouter(prefix="/cloud", tags=["AI Cloud Sync"])

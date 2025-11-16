@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.trend_analyzer import analyze_trends
 
 router = APIRouter(prefix="/analytics", tags=["Trend Analyzer"])

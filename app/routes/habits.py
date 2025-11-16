@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.ai_habit_service import generate_ai_habits, get_today_habits, update_habit_status
 from app.schemas.ai_habit import HabitUpdate
 

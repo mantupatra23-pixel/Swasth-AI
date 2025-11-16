@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.workout_generator import generate_workout
 from app.core.database import SessionLocal
 from app.models.workout_plan import WorkoutPlan

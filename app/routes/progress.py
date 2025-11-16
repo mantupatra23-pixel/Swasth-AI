@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.progress_tracker import add_progress, get_weekly_report
 from app.schemas.progress_log import ProgressCreate
 

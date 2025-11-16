@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter()
 from app.services.competitor_analyzer import analyze_competitors
 
 router = APIRouter(prefix="/competitor", tags=["Competitor Analyzer"])
